@@ -57,7 +57,7 @@ set(MDA_WARNING_FLAGS
 )
 
 set(MDA_SIZE_FLAGS  -ffunction-sections -fdata-sections)
-set(MDA_LINK_FLAGS  -Wl,--gc-sections -Wl,-Map=${PROJECT_NAME}.map)
+set(MDA_LINK_FLAGS -Wl,--gc-sections)
 
 pico_sdk_init()
 
@@ -77,20 +77,37 @@ target_compile_options(mda_core PRIVATE
     ${MDA_SIZE_FLAGS}
 )
 
-target_link_options(mda_core PRIVATE
-    ${MDA_LINK_FLAGS}
-)
-
 target_link_libraries(mda_core PUBLIC
     pico_stdlib
     hardware_adc
 )
 
+# --- MDA Executable ---
 add_executable(${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME} PRIVATE mda_core)
+target_link_options(${PROJECT_NAME} PRIVATE ${MDA_LINK_FLAGS} -Wl,-Map=$<TARGET_FILE_BASE_NAME:${PROJECT_NAME}>.map)
 
 pico_enable_stdio_uart(${PROJECT_NAME} 1)
 pico_enable_stdio_usb(${PROJECT_NAME} 1)
 pico_add_extra_outputs(${PROJECT_NAME})
+
+# --- ENGINE SIMULATOR EXECUTABLE ---
+add_executable(Engine_Simulator src/main_engine.c)
+
+target_compile_options(Engine_Simulator PRIVATE
+    ${MDA_WARNING_FLAGS}
+    ${MDA_SIZE_FLAGS}
+)
+
+target_link_libraries(Engine_Simulator PRIVATE
+    pico_stdlib
+)
+
+target_link_options(Engine_Simulator PRIVATE ${MDA_LINK_FLAGS} -Wl,-Map=$<TARGET_FILE_BASE_NAME:Engine_Simulator>.map)
+
+pico_enable_stdio_uart(Engine_Simulator 1)
+pico_enable_stdio_usb(Engine_Simulator 1)
+pico_add_extra_outputs(Engine_Simulator)
+
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
