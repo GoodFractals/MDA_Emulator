@@ -14,29 +14,27 @@
 // ================================================================
 
 #include "pico/stdlib.h"
+#include "pico/cyw43_arch.h" // <-- Add this
 #include "mda_hal.h"
 #include "mda_controller.h"
 
-// Re-enable strict warnings that were disabled globally to silence
-// SDK noise. These apply only to this file.
-#if defined(__GNUC__)
-    #pragma GCC diagnostic warning "-Wmissing-prototypes"
-    #pragma GCC diagnostic warning "-Wundef"
-#endif
-
 int main(void)
 {
+    if (cyw43_arch_init()) { 
+        return -1; 
+    }
+    
+    // Turn the LED on SOLID and leave it on
+    cyw43_arch_gpio_put(CYW43_WL_GPIO_LED_PIN, 1);
+
     Hal_Init();
     Mda_Init();
 
-    // Power of 10 Rule 2: constant-bound main loop.
-    // The controller never blocks; each iteration yields 20 ms.
     while (true)
     {
         Mda_Tick();
         sleep_ms(20U);
     }
 
-    // MISRA-C 15.5: single point of exit. Unreachable, but present.
     return 0;
 }

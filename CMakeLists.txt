@@ -80,6 +80,7 @@ target_compile_options(mda_core PRIVATE
 target_link_libraries(mda_core PUBLIC
     pico_stdlib
     hardware_adc
+    pico_cyw43_arch_none
 )
 
 # --- MDA Executable ---
@@ -101,6 +102,7 @@ target_compile_options(Engine_Simulator PRIVATE
 
 target_link_libraries(Engine_Simulator PRIVATE
     pico_stdlib
+    pico_cyw43_arch_none
 )
 
 target_link_options(Engine_Simulator PRIVATE ${MDA_LINK_FLAGS} -Wl,-Map=$<TARGET_FILE_BASE_NAME:Engine_Simulator>.map)

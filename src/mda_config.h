@@ -35,7 +35,7 @@
 // completes in about 9 seconds. Set to false before flashing to
 // real hardware for an interview demonstration.
 // ----------------------------------------------------------------
-#define MDA_TEST_MODE           (true)
+#define MDA_TEST_MODE           (false)
 #define MDA_TEST_SCALE_FACTOR   (20U)
 
 // Both operands are compile-time constants, so the ternary is
