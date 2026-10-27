@@ -46,7 +46,7 @@ Fault State Triggered (Latched Shutdown):
 
 ### UART Logging
 Real-time state machine transitions captured via USB serial logging:
-![UART Logs](images/UARTLoggingWithTeraTerm.jpg)
+![UART Logs](images/UARTLoggingWithTeraTerm.png)
 
 ## How to Build
 
