@@ -65,6 +65,8 @@ void Hal_Init(void)
 {
     stdio_init_all();
 
+    stdio_set_driver_enabled(&stdio_uart, true);
+
     // Negative-closing switches use internal pull-ups so the pin
     // reads HIGH when the switch is open and LOW when closed.
     gpio_init((uint)PIN_REMOTE_START);

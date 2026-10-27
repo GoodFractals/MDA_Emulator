@@ -25,6 +25,7 @@
 #include "mda_config.h"
 
 #include "pico/stdlib.h"
+#include <stdio.h>
 
 // Re-enable strict warnings that were disabled globally to silence
 // SDK noise. These apply only to this file.
@@ -365,6 +366,9 @@ static void Mda_HandleFault(bool remote_start)
 static void Mda_EnterState(MdaState_t new_state)
 {
     MDA_ASSERT(new_state <= STATE_FAULT_CHARGE);
+    
+    // Print the state transition to the UART
+    printf("[MDA] State: %d -> %d\n", g_current_state, new_state);
 
     g_current_state    = new_state;
     g_state_entry_time = get_absolute_time();

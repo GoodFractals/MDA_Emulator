@@ -44,6 +44,10 @@ Engine Running (Healthy State):
 Fault State Triggered (Latched Shutdown):
 ![Fault State Triggered](images/FaultStateTriggered.jpg)
 
+### UART Logging
+Real-time state machine transitions captured via USB serial logging:
+![UART Logs](images/UARTLoggingWithTeraTerm.jpg)
+
 ## How to Build
 
 1. Clone the repo: git clone https://github.com/GoodFractals/MDA_Emulator.git

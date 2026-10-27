@@ -108,7 +108,7 @@ target_link_libraries(Engine_Simulator PRIVATE
 target_link_options(Engine_Simulator PRIVATE ${MDA_LINK_FLAGS} -Wl,-Map=$<TARGET_FILE_BASE_NAME:Engine_Simulator>.map)
 
 pico_enable_stdio_uart(Engine_Simulator 1)
-pico_enable_stdio_usb(Engine_Simulator 1)
+pico_enable_stdio_usb(Engine_Simulator 0)
 pico_add_extra_outputs(Engine_Simulator)
 
 
