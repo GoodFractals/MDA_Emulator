@@ -29,6 +29,8 @@ The system was validated using a 7-step HIL test sequence:
 
 ### Digital Twin (Velxio Simulation)
 ![Velxio Prototype Simulation](images/VelxioPrototypeEarlyButFunctional.jpg)
+
+### Close-Up View of Pico2Pico Communication Wiring
 ![Pico Bridge Communication Lines](images/PicoCommunicationLinesUpClose.jpg)
 
 ### Physical Hardware Layout
