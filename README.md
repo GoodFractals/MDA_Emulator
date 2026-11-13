@@ -27,7 +27,7 @@ The system was validated using a 7-step HIL test sequence:
 
 ## Gallery
 
-### Digital Twin (Velxio Simulation Running on Local Host Through WSL 2)
+### Digital Twin (Velxio Simulation Running on Local Host through WSL 2)
 ![Velxio Prototype Simulation](images/VelxioPrototypeEarlyButFunctional.jpg)
 
 ### Close-Up View of Pico2Pico Communication Wiring
